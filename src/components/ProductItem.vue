@@ -2,8 +2,8 @@
     <div class="product-item" :class="{'hover' : hover}" @mouseover="hover = true" @mouseleave="hover = false">
 
         <section class="product-image-gallery columns">
-            <product-favourite class="fav-product" :product-id="id" :is-favourite-initial="false" />
-            
+            <product-favourite v-if="$_show_favourite_widget" class="fav-product" :product-id="id" :is-favourite-initial="false"/>
+
             <product-image v-for="image in images"
                            :key="image.cover"
                            :cover="image.cover" :hover="image.hover" :alt="title"/>
@@ -27,7 +27,7 @@
                     :label="tag.label"
                     :color="tag.color"/>
         </section>
-        
+
         <section class="columns">
             <product-pricing
                     class="column"
@@ -39,17 +39,22 @@
     </div>
 </template>
 <script>
+
+    //Sub-components
     import ProductImage from "./ProductImages";
     import CampaignTag from "./CampaignTag";
     import ProductTag from "./ProductTag";
     import ProductPricing from "./ProductPricing";
     import ProductFavourite from "./ProductFavourite";
 
+    //Mixins
+    import { SettingsMixin } from "../mixins";
+
     export default {
         props: {
             id: {
                 type: Number,
-                required: true
+                required: true,
             },
             title: String,
             images: Array,
@@ -69,8 +74,9 @@
             },
         },
         components: {ProductFavourite, ProductPricing, ProductTag, CampaignTag, ProductImage},
+        mixins: [SettingsMixin],
         data: () => ({
-            hover: false
+            hover: false,
         }),
     };
 </script>
@@ -92,7 +98,7 @@
         top: .35em;
         right: .35em;
     }
-    
+
     /* Float product favourite start to right side */
     .product-image-gallery .fav-product {
         position: absolute;

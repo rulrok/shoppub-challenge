@@ -11,12 +11,16 @@
             </div>
         </div>
 
-
         <p>{{title}}</p>
 
-        <div class="campaign-tags Grid -center">
-            <campaign-tag v-for="tag in campaign_tags" :key="tag.label" :label="tag.label" :color="tag.color"/>
-        </div>
+        <section class="columns is-mobile is-centered is-5">
+            <campaign-tag
+                    class="column is-narrow"
+                    v-for="tag in campaign_tags"
+                    :key="tag.label"
+                    :label="tag.label"
+                    :color="tag.color"/>
+        </section>
         
         <product-pricing 
                 :total-value="pricing.total_value" 
@@ -87,7 +91,7 @@
         left: .35em;
     }
 
-    .campaign-tags > .campaign-tag + .campaign-tag {
-        margin-left: .35em;
-    }
+    /*.campaign-tags > .campaign-tag + .campaign-tag {*/
+    /*    margin-left: .35em;*/
+    /*}*/
 </style>

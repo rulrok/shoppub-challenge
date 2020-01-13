@@ -38,9 +38,9 @@
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
     
-    @import "~grd/grd.css";
+    @import "src/styles/custom-bulma";
+    @import "src/styles/variables";
     
-    @import "src/variables";
     * {
         color : $base-color-dark;
     }

@@ -22,7 +22,10 @@
 
 <style scoped>
     .campaign-tag {
-        padding: 7px;
-        max-width: 150px;
+        padding: .35em .75em;
+    }
+    
+    .campaign-tag + .campaign-tag {
+        margin-left: .35em;
     }
 </style>

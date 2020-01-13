@@ -51,7 +51,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "src/variables";
+    @import "src/styles/variables";
 
     .product-pricing p {
         margin: .2em 0;

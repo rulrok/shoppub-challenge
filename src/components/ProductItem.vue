@@ -15,12 +15,19 @@
         <div class="campaign-tags Grid -center">
             <campaign-tag v-for="tag in campaign_tags" :key="tag.label" :label="tag.label" :color="tag.color"/>
         </div>
+        
+        <product-pricing 
+                :total-value="pricing.total_value" 
+                :total-value-from="pricing.total_value_from"
+                :installments="pricing.installments"
+        />
     </div>
 </template>
 <script>
     import ProductImage from "./ProductImages";
     import CampaignTag from "./CampaignTag";
     import ProductTag from "./ProductTag";
+    import ProductPricing from "./ProductPricing";
 
     export default {
         props: {
@@ -29,15 +36,27 @@
             images: Array,
             tags: Array,
             campaign_tags: Array,
+            pricing: {
+                type: Object,
+                default: () => ({
+                    total_value: 0.0,
+                    total_value_from: 0.0,
+                    installments: {
+                        quantity: 1,
+                        installment_value: 0.0,
+                        total_value: 0.0,
+                    },
+                }),
+            },
         },
-        components: {ProductTag, CampaignTag, ProductImage},
+        components: {ProductPricing, ProductTag, CampaignTag, ProductImage},
     };
 </script>
 <style scoped>
     .product-item {
         font-size: 1rem;
         max-width: 300px;
-        
+
         padding: 10px;
     }
 
@@ -52,7 +71,7 @@
         top: 0;
         right: 0;
     }
-    
+
     .campaign-tags > .campaign-tag + .campaign-tag {
         margin-left: 5px;
     }

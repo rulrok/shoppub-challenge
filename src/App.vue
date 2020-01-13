@@ -33,12 +33,20 @@
 </script>
 
 <style lang="scss">
-    @import "~grd/grd.css";
-
     @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+    
+    @import "~grd/grd.css";
+    
+    @import "src/variables";
+    * {
+        color : $base-color-dark;
+    }
 </style>
 
 <style>
+    html, body {
+        font-size: 14px;
+    }
     
     #app {
         font-family: 'Roboto', sans-serif;

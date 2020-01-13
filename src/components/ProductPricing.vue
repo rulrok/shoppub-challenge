@@ -1,21 +1,32 @@
 <template>
-    <div class="product-pricing">
+    <main class="product-pricing">
+
         <template v-if="hasDiscount">
-            <p class="price-line">
-                <span class="grayed-out-text">de <s>R${{totalValueFrom}}</s></span> por <span class="destak-price">R${{installments.total_value}}</span>
-            </p>
+            <section class="price-line">
+                <div class="columns is-centered is-gapless is-vcentered">
+                    <div class="column is-narrow">
+                        <p class="grayed-out-text">de&nbsp;<s>R${{totalValueFrom}}</s></p>
+                    </div>
+                    <div class="column is-narrow">
+                        <p>por&nbsp;<span class="destak-price">R${{installments.total_value}}</span></p>
+                    </div>
+                </div>
+            </section>
         </template>
-        
+
         <template v-if="hasInstallments">
-            <p class="installments-line">
-                ATÉ <span class="destak-color">{{installments.quantity}}X</span> DE <span class="destak-color">R${{installments.installment_value}}</span>
-            </p>
+            <section class="installments-line">
+                <div class="columns is-centered is-gapless is-vcentered">
+                    <span class="is-hidden-mobile">ATÉ&nbsp;</span><span class="destak-color">{{installments.quantity}}X</span>&nbsp;DE&nbsp;<span
+                        class="destak-color">R${{installments.installment_value}}</span>
+                </div>
+            </section>
         </template>
-        
-        <p class="cash-down-line">
+
+        <section class="cash-down-line">
             <span class="destak-price">R${{totalValue}}</span> à vista
-        </p>
-    </div>
+        </section>
+    </main>
 </template>
 
 <script>
@@ -43,22 +54,27 @@
             hasDiscount() {
                 return this.totalValue !== this.totalValueFrom;
             },
-            hasInstallments(){
+            hasInstallments() {
                 return this.installments.quantity > 1;
-            }
+            },
         },
     };
 </script>
 
 <style scoped lang="scss">
     @import "src/styles/variables";
+    @import "node_modules/bulma/sass/utilities/_all.sass";
+    @import "node_modules/bulma/sass/base/_all.sass";
+    @import "node_modules/bulma/sass/utilities/mixins";
 
-    .product-pricing p {
+    /* Line height and margin between sections */
+    main > section {
+        line-height: 1.35em;
         margin: .2em 0;
-        line-height: 1em;
-        
-        > * {
-            vertical-align: baseline;
+
+        @include mobile() {
+            /* On mobile size, align text on left */
+            text-align: left;
         }
     }
 
@@ -68,6 +84,7 @@
 
     .destak-price {
         font-size: 1.3em;
+        vertical-align: middle;
         color: $destak-color;
     }
 

@@ -1,8 +1,11 @@
 <template>
     <div id="app">
         <template v-if="$_product_list_configured">
+
+            <template v-if="!products$loading">
+                <product-item v-for="product in products" v-bind="product" />
+            </template>
             
-            <product-item v-bind="products[0]" />
         </template>
     </div>
 </template>

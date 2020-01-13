@@ -2,6 +2,8 @@
     <div class="product-item">
 
         <div class="product-image-gallery">
+            <product-favourite :product-id="id" :is-favourite-initial="false" />
+            
             <product-image v-for="image in images" :cover="image.cover" :hover="image.hover" :alt="title"/>
 
             <div class="tags">
@@ -28,10 +30,14 @@
     import CampaignTag from "./CampaignTag";
     import ProductTag from "./ProductTag";
     import ProductPricing from "./ProductPricing";
+    import ProductFavourite from "./ProductFavourite";
 
     export default {
         props: {
-            id: Number,
+            id: {
+                type: Number,
+                required: true
+            },
             title: String,
             images: Array,
             tags: Array,
@@ -49,7 +55,7 @@
                 }),
             },
         },
-        components: {ProductPricing, ProductTag, CampaignTag, ProductImage},
+        components: {ProductFavourite, ProductPricing, ProductTag, CampaignTag, ProductImage},
     };
 </script>
 <style scoped>

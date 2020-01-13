@@ -1,6 +1,6 @@
 <template>
     <div class="product-tag" :style="`background-color: ${color}; color: white;`">
-        <p>{{label}}</p>
+        <strong>{{label}}</strong>
     </div>
 </template>
 
@@ -31,7 +31,7 @@
         display: table;
     }
     
-    .product-tag p {
+    .product-tag strong {
         /* Vertical center text - child */
         display: table-cell;
         vertical-align: middle;

@@ -8,7 +8,7 @@
                            :key="image.cover"
                            :cover="image.cover" :hover="image.hover" :alt="title"/>
 
-            <div class="tags">
+            <div class="tags" v-if="$_show_tags">
                 <product-tag v-for="tag in tags" :key="tag.label" :label="tag.label" :color="tag.color"/>
             </div>
         </section>

@@ -19,7 +19,7 @@
             </div>
         </section>
 
-        <section class="columns is-mobile is-centered is-5">
+        <section v-if="$_show_campaign_tags" class="columns is-mobile is-centered is-5">
             <campaign-tag
                     class="column is-narrow"
                     v-for="tag in campaign_tags"

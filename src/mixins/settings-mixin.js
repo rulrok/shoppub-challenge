@@ -16,6 +16,9 @@ export default {
         $_show_tags() {
             return this.$_product_list_settings["show_tags"] || false;
         },
+        $_show_campaign_tags(){
+            return this.$_product_list_settings["show_campaign_tags"] || false;  
+        },
         $_product_list_configured() {
             try {
                 return this.$_settings.layout.product.list;

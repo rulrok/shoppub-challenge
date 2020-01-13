@@ -30,11 +30,15 @@
         /* Vertical center text - parent */
         display: table;
     }
-
     
     .product-tag p {
         /* Vertical center text - child */
         display: table-cell;
         vertical-align: middle;
+    }
+    
+    .product-tag + .product-tag {
+        /* Vertical spacing for multiple tags */
+        margin-top: 5px;
     }
 </style>

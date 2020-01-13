@@ -8,12 +8,15 @@
   },
   "dependencies": {
     "axios": "^0.19.1",
+    "grd": "^1.4.0",
     "vue": "^2.6.10",
     "vue-async-properties": "^0.5.1",
     "vue-axios": "^2.1.5"
   },
   "devDependencies": {
     "@vue/cli-service": "^4.1.0",
+    "sass": "^1.24.4",
+    "sass-loader": "^8.0.1",
     "vue-template-compiler": "^2.6.10"
   },
   "browserslist": [

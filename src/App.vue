@@ -32,7 +32,12 @@
     };
 </script>
 
+<style lang="scss">
+    @import "~grd/grd.css";
+</style>
+
 <style>
+    
     #app {
         font-family: "Avenir", Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;

@@ -25,5 +25,16 @@
 </script>
 
 <style scoped>
-
+    
+    /* Both styles will create a responsive square image */
+    
+    img {
+        width: 100%;
+    }
+    
+    img:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
 </style>

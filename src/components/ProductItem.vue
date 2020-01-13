@@ -2,7 +2,7 @@
     <div class="product-item">
 
         <div class="product-image-gallery">
-            <product-favourite :product-id="id" :is-favourite-initial="false" />
+            <product-favourite class="fav-product" :product-id="id" :is-favourite-initial="false" />
             
             <product-image v-for="image in images" :cover="image.cover" :hover="image.hover" :alt="title"/>
 
@@ -68,17 +68,23 @@
 
     .product-image-gallery {
         position: relative;
-        background-color: #D1EFFF;
     }
 
     /* Float product tags over image */
     .product-image-gallery .tags {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: .35em;
+        right: .35em;
+    }
+    
+    /* Float product favourite start to right side */
+    .product-image-gallery .fav-product {
+        position: absolute;
+        top: .35em;
+        left: .35em;
     }
 
     .campaign-tags > .campaign-tag + .campaign-tag {
-        margin-left: 5px;
+        margin-left: .35em;
     }
 </style>

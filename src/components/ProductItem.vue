@@ -12,7 +12,9 @@
 
         <p>{{title}}</p>
 
-        <CampaignTag v-for="tag in campaign_tags" :key="tag.label" :label="tag.label" :color="tag.color"/>
+        <div class="campaign-tags Grid -center">
+            <campaign-tag v-for="tag in campaign_tags" :key="tag.label" :label="tag.label" :color="tag.color"/>
+        </div>
     </div>
 </template>
 <script>
@@ -42,9 +44,14 @@
         background-color: #D1EFFF;
     }
 
+    /* Float product tags over image */
     .product-image-gallery .tags {
         position: absolute;
         top: 0;
         right: 0;
+    }
+    
+    .campaign-tags > .campaign-tag + .campaign-tag {
+        margin-left: 5px;
     }
 </style>

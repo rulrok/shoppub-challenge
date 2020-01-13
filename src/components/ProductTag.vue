@@ -1,6 +1,6 @@
 <template>
     <div class="product-tag" :style="`background-color: ${color}; color: white;`">
-        {{label}}
+        <p>{{label}}</p>
     </div>
 </template>
 
@@ -22,7 +22,19 @@
 
 <style scoped>
     .product-tag {
-        padding: 7px;
-        max-width: 150px;
+        font-size: 1em;
+        
+        width: 46px;
+        height: 46px;
+
+        /* Vertical center text - parent */
+        display: table;
+    }
+
+    
+    .product-tag p {
+        /* Vertical center text - child */
+        display: table-cell;
+        vertical-align: middle;
     }
 </style>

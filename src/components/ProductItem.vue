@@ -1,17 +1,23 @@
 <template>
     <div class="product-item" :class="{'hover' : hover}" @mouseover="hover = true" @mouseleave="hover = false">
 
-        <div class="product-image-gallery">
+        <section class="product-image-gallery columns">
             <product-favourite class="fav-product" :product-id="id" :is-favourite-initial="false" />
             
-            <product-image v-for="image in images" :cover="image.cover" :hover="image.hover" :alt="title"/>
+            <product-image v-for="image in images"
+                           :key="image.cover"
+                           :cover="image.cover" :hover="image.hover" :alt="title"/>
 
             <div class="tags">
                 <product-tag v-for="tag in tags" :key="tag.label" :label="tag.label" :color="tag.color"/>
             </div>
-        </div>
+        </section>
 
-        <p>{{title}}</p>
+        <section class="columns">
+            <div class="column">
+                <p>{{title}}</p>
+            </div>
+        </section>
 
         <section class="columns is-mobile is-centered is-5">
             <campaign-tag
@@ -22,11 +28,14 @@
                     :color="tag.color"/>
         </section>
         
-        <product-pricing 
-                :total-value="pricing.total_value" 
-                :total-value-from="pricing.total_value_from"
-                :installments="pricing.installments"
-        />
+        <section class="columns">
+            <product-pricing
+                    class="column"
+                    :total-value="pricing.total_value"
+                    :total-value-from="pricing.total_value_from"
+                    :installments="pricing.installments"
+            />
+        </section>
     </div>
 </template>
 <script>

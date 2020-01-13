@@ -1,5 +1,5 @@
 <template>
-    <div class="product-item">
+    <div class="product-item" :class="{'hover' : hover}" @mouseover="hover = true" @mouseleave="hover = false">
 
         <div class="product-image-gallery">
             <product-favourite class="fav-product" :product-id="id" :is-favourite-initial="false" />
@@ -56,6 +56,9 @@
             },
         },
         components: {ProductFavourite, ProductPricing, ProductTag, CampaignTag, ProductImage},
+        data: () => ({
+            hover: false
+        }),
     };
 </script>
 <style scoped>

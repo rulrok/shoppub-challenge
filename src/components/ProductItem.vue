@@ -1,10 +1,11 @@
 <template>
-    <div class="product-item" :class="{'hover' : hover}" @mouseover="hover = true" @mouseleave="hover = false">
+    <main class="product-item" :class="{'hover' : hover}" @mouseover="hover = true" @mouseleave="hover = false">
 
         <section class="product-image-gallery columns">
             <product-favourite v-if="$_show_favourite_widget" class="fav-product" :product-id="id" :is-favourite-initial="false"/>
 
             <product-image v-for="image in images"
+                           class="column"
                            :key="image.cover"
                            :cover="image.cover" :hover="image.hover" :alt="title"/>
 
@@ -36,7 +37,7 @@
                     :installments="pricing.installments"
             />
         </section>
-    </div>
+    </main>
 </template>
 <script>
 
@@ -80,12 +81,19 @@
         }),
     };
 </script>
-<style scoped>
+<style scoped lang="scss">
+
+    @import "src/styles/variables";
+
     .product-item {
         font-size: 1rem;
         max-width: 300px;
 
+        margin: .75em;
         padding: 10px;
+        
+        border: 1px solid $border-color;
+        border-radius: 5px;
     }
 
     .product-image-gallery {
@@ -95,15 +103,15 @@
     /* Float product tags over image */
     .product-image-gallery .tags {
         position: absolute;
-        top: .35em;
-        right: .35em;
+        top: .75em;
+        right: .75em;
     }
 
     /* Float product favourite start to right side */
     .product-image-gallery .fav-product {
         position: absolute;
-        top: .35em;
-        left: .35em;
+        top: .75em;
+        left: .75em;
     }
 
     /*.campaign-tags > .campaign-tag + .campaign-tag {*/

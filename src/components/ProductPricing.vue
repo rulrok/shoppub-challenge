@@ -3,12 +3,12 @@
 
         <template v-if="hasDiscount">
             <section class="price-line">
-                <div class="columns is-centered is-gapless is-vcentered">
+                <div class="columns is-centered is-variable is-1">
                     <div class="column is-narrow">
-                        <p class="grayed-out-text">de&nbsp;<s>R${{totalValueFrom}}</s></p>
+                        <p class="grayed-out-text">de <s>R${{totalValueFrom}}</s></p>
                     </div>
                     <div class="column is-narrow">
-                        <p>por&nbsp;<span class="destak-price">R${{installments.total_value}}</span></p>
+                        <p>por <span class="destak-price">R${{installments.total_value}}</span></p>
                     </div>
                 </div>
             </section>
@@ -17,14 +17,18 @@
         <template v-if="hasInstallments">
             <section class="installments-line">
                 <div class="columns is-centered is-gapless is-vcentered">
-                    <span class="is-hidden-mobile">ATÉ&nbsp;</span><span class="destak-color">{{installments.quantity}}X</span>&nbsp;DE&nbsp;<span
-                        class="destak-color">R${{installments.installment_value}}</span>
+                    <p>
+                        <span class="is-hidden-mobile">ATÉ&nbsp;</span>
+                        <span class="destak-color">{{installments.quantity}}X</span>
+                        &nbsp;DE&nbsp;
+                        <span class="destak-color">R${{installments.installment_value}}</span>
+                    </p>
                 </div>
             </section>
         </template>
 
         <section class="cash-down-line">
-            <span class="destak-price">R${{totalValue}}</span> à vista
+            <p><span class="destak-price">R${{totalValue}}</span> à vista</p>
         </section>
     </main>
 </template>
@@ -75,6 +79,15 @@
         @include mobile() {
             /* On mobile size, align text on left */
             text-align: left;
+            
+            .columns.is-variable.is-1 {
+                :first-child {
+                    padding-bottom: 0;
+                }
+                :last-child {
+                    padding-top: 0;
+                }
+            }
         }
     }
 

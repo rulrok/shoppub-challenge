@@ -1,8 +1,27 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
 
-Vue.config.productionTip = false
+import Axios from "axios";
 
-new Vue({
-  render: function (h) { return h(App) },
-}).$mount('#app')
+Vue.config.productionTip = false;
+
+Axios
+.get("/settings.json")
+.then(response => {
+
+    let settings = response.data;
+
+    //Set html title
+    document.title = settings.title;
+
+    new Vue({
+        render: function (h) {
+            return h(App);
+        },
+        data: {
+            settings,
+        },
+    }).$mount("#app");
+});
+
+

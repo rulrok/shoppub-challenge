@@ -3,7 +3,9 @@
         <template v-if="$_product_list_configured">
 
             <template v-if="!products$loading">
-                <product-item v-for="product in products" v-bind="product" />
+                <section class="columns is-centered">
+                    <product-item class="column" v-for="product in products" v-bind="product" />
+                </section>
             </template>
             
         </template>

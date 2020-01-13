@@ -1,8 +1,8 @@
 <template>
-    <div class="product-image">
+    <figure class="product-image image is-square">
         <img class="cover" :src="cover" :alt="alt">
         <img class="hover" :src="hover" :alt="alt">
-    </div>
+    </figure>
 </template>
 
 <script>
@@ -41,20 +41,5 @@
         > img.hover {
             display: initial;
         }
-    }
-</style>
-
-<style scoped>
-
-    /* Both styles will create a responsive square image */
-
-    img {
-        width: 100%;
-    }
-
-    img:after {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
     }
 </style>

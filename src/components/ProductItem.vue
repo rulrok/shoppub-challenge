@@ -2,14 +2,16 @@
     <div>
         <product-images/>
         
+        <CampaignTag v-for="tag in tags" :key="tag.label" :label="tag.label" :color="tag.color" />
+        
         <p>{{title}}</p>
         
-        <ProductTag v-for="tag in tags" :key="tag.label" :label="tag.label" :color="tag.color" />
+        
     </div>
 </template>
 <script>
 import ProductImages from "./ProductImages";
-import ProductTag from "./ProductTag";
+import CampaignTag from "./CampaignTag";
 export default {
     props: {
       id: Number,
@@ -17,6 +19,6 @@ export default {
       images: Array,
       tags: Array  
     },
-    components: {ProductTag, ProductImages},
+    components: {CampaignTag, ProductImages},
 };
 </script>

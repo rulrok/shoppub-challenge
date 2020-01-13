@@ -1,7 +1,8 @@
 <template>
     <div id="app">
         <template v-if="$_product_list_configured">
-            Produtos
+            
+            <product-item v-bind="products[0]" />
         </template>
     </div>
 </template>

@@ -1,8 +1,16 @@
 import Vue from "vue";
 import App from "./App.vue";
 
-import Axios from "axios";
+// you can use whatever http library you prefer
+import Axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, Axios)
 
+//Async Properties
+import VueAsyncProperties from 'vue-async-properties'
+Vue.use(VueAsyncProperties)
+
+//Production tip
 Vue.config.productionTip = false;
 
 Axios

@@ -1,14 +1,13 @@
 <template>
     <div id="app">
         <template v-if="$_product_list_configured">
-            <ul>
-                
-            </ul>
+            Produtos
         </template>
     </div>
 </template>
 
 <script>
+    //Components
     import ProductItem from "./components/ProductItem.vue";
 
     //Mixins
@@ -16,6 +15,15 @@
 
     export default {
         name: "app",
+        data: () => ({}),
+        asyncData: {
+            products: {
+                get() {
+                    return this.$http.get("/products.json");
+                },
+                default: [],
+            },
+        },
         mixins: [SettingsMixin],
         components: {
             ProductItem,

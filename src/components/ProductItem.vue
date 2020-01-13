@@ -37,6 +37,8 @@
     .product-item {
         font-size: 1rem;
         max-width: 300px;
+        
+        padding: 10px;
     }
 
     .product-image-gallery {

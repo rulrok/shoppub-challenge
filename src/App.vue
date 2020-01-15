@@ -4,7 +4,7 @@
 
             <template v-if="!products$loading">
                 <section class="columns is-centered">
-                    <product-item class="column" v-for="product in products" v-bind="product" />
+                    <product-item class="column" v-for="product in products" :key="product.id" v-bind="product" />
                 </section>
             </template>
             

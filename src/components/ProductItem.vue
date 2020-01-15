@@ -39,12 +39,10 @@
         </section>
 
         <!-- This section will only be used for hover component -->
-        <section class="attributes">
-            <div class="columns is-centered">
-                <product-attribute
-                        class="column is-narrow"
-                        v-for="attribute in attributes" :id="attribute.id" :label="attribute.label"/>
-            </div>
+        <section class="attributes columns is-centered is-mobile">
+            <product-attribute
+                    class="column is-narrow"
+                    v-for="attribute in attributes" :key="attribute.id" :id="attribute.id" :label="attribute.label"/>
         </section>
         
         <section class="related-products">
@@ -147,13 +145,8 @@
 </style>
 
 <style>
-    /* Style for toggling attributes on element hover */
-
-    .product-item .attributes {
+    /* Style for toggling attributes on element not hover */
+    .product-item:not(.hover) .attributes {
         display: none;
-    }
-
-    .product-item.hover .attributes {
-        display: initial;
     }
 </style>

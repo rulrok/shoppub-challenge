@@ -1,27 +1,37 @@
 <template>
     <main>
-        <div class="columns is-mobile is-vcentered">
-            <div class="column is-paddingless is-marginless">
-                <button @click="goPrev">
-                    <icon-arrow-left/>
-                </button>
+        <template v-if="display_as_carousel">
+            <div class="columns is-mobile is-vcentered">
+                <div class="column is-paddingless is-marginless">
+                    <button @click="goPrev">
+                        <icon-arrow-left/>
+                    </button>
+                </div>
+                <div class="column is-four-fifths is-paddingless is-marginless">
+                    <agile ref="carousel" :dots="false" :navButtons="false" :slidesToShow="3">
+                        <div class="slide" v-for="prod in products" :key="prod.id">
+                            <figure class="image" :class="{'highlighted': is_highlighted(prod.id) }">
+                                <img :src="prod.image" :alt="prod.title">
+                            </figure>
+                        </div>
+                    </agile>
+                </div>
+                <div class="column is-paddingless is-marginless">
+                    <button @click="goNext">
+                        <icon-arrow-right/>
+                    </button>
+                </div>
             </div>
-            <div class="column is-four-fifths is-paddingless is-marginless">
-                <agile ref="carousel" :dots="false" :navButtons="false" :slidesToShow="3">
-                    <div class="slide" v-for="prod in products" :key="prod.id">
-                        <figure class="image" :class="{'highlighted': is_highlighted(prod.id) }">
-                            <img :src="prod.image" :alt="prod.title">
-                        </figure>
-                    </div>
-                </agile>
+        </template>
+        <template v-else>
+            <div class="columns">
+                <div class="column is-one-third" v-for="prod in products" :key="prod.id">
+                    <figure class="image" :class="{'highlighted': is_highlighted(prod.id) }">
+                        <img :src="prod.image" :alt="prod.title">
+                    </figure>
+                </div>
             </div>
-            <div class="column is-paddingless is-marginless">
-                <button @click="goNext">
-                    <icon-arrow-right/>
-                </button>
-            </div>
-        </div>
-
+        </template>
     </main>
 </template>
 
@@ -60,6 +70,11 @@
             },
             goNext() {
                 this.$refs.carousel.goToNext();
+            },
+        },
+        computed: {
+            display_as_carousel() {
+                return this.products.length > 3;
             },
         },
     };

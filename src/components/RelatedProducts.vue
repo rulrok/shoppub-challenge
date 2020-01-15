@@ -1,12 +1,16 @@
 <template>
     <main>
-        <template v-if="display_as_carousel">
-            <div class="columns is-mobile is-vcentered">
-                <div class="column is-paddingless is-marginless">
-                    <button @click="goPrev">
-                        <icon-arrow-left/>
-                    </button>
-                </div>
+        <div class="columns is-mobile is-vcentered">
+            
+            <!-- Left side -->
+            <div class="column is-1 is-paddingless is-marginless">
+                <button v-if="display_as_carousel" @click="goPrev">
+                    <icon-arrow-left/>
+                </button>
+            </div>
+
+            <!-- Carousel container -->
+            <template v-if="display_as_carousel">
                 <div class="column is-four-fifths is-paddingless is-marginless">
                     <agile ref="carousel" :dots="false" :navButtons="false" :slidesToShow="3">
                         <div class="slide" v-for="prod in products" :key="prod.id">
@@ -16,22 +20,25 @@
                         </div>
                     </agile>
                 </div>
-                <div class="column is-paddingless is-marginless">
-                    <button @click="goNext">
-                        <icon-arrow-right/>
-                    </button>
+            </template>
+            <!-- Regular column container -->
+            <template v-else>
+                <div class="columns">
+                    <div class="column is-one-third" v-for="prod in products" :key="prod.id">
+                        <figure class="image" :class="{'highlighted': is_highlighted(prod.id) }">
+                            <img :src="prod.image" :alt="prod.title">
+                        </figure>
+                    </div>
                 </div>
+            </template>
+
+            <!-- Right side -->
+            <div class="column is-1 is-paddingless is-marginless">
+                <button v-if="display_as_carousel" @click="goNext">
+                    <icon-arrow-right/>
+                </button>
             </div>
-        </template>
-        <template v-else>
-            <div class="columns">
-                <div class="column is-one-third" v-for="prod in products" :key="prod.id">
-                    <figure class="image" :class="{'highlighted': is_highlighted(prod.id) }">
-                        <img :src="prod.image" :alt="prod.title">
-                    </figure>
-                </div>
-            </div>
-        </template>
+        </div>
     </main>
 </template>
 

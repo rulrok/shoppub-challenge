@@ -93,17 +93,15 @@
         mixins: [SettingsMixin],
         data: () => ({
             //TODO set to false
-            hover: true,
+            hover: false,
         }),
         methods: {
             onMouseOver(){
-                //TODO remove return
-                return;
+                
                 this.hover = true;
             },
             onMouseLeave(){
-                //TODO remove return
-                return;
+                
                 this.hover = false;
             }
         }
@@ -144,9 +142,12 @@
     
 </style>
 
-<style>
+<style lang="scss">
     /* Style for toggling attributes on element not hover */
-    .product-item:not(.hover) .attributes {
-        display: none;
+    
+    .product-item:not(.hover) {
+        .attributes, .related-products {
+            display: none;    
+        }
     }
 </style>

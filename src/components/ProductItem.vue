@@ -93,15 +93,17 @@
         mixins: [SettingsMixin],
         data: () => ({
             //TODO set to false
-            hover: false,
+            hover: true,
         }),
         methods: {
             onMouseOver(){
-                
+                //TODO remove return
+                return;
                 this.hover = true;
             },
             onMouseLeave(){
-                
+                //TODO remove return
+                return;
                 this.hover = false;
             }
         }

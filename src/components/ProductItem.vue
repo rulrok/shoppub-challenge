@@ -46,6 +46,10 @@
                         v-for="attribute in attributes" :id="attribute.id" :label="attribute.label"/>
             </div>
         </section>
+        
+        <section class="related-products">
+            <related-products :products="related_products" :highlight_product_id="id" />
+        </section>
     </main>
 </template>
 <script>
@@ -60,6 +64,7 @@
     //Mixins
     import { SettingsMixin } from "../mixins";
     import ProductAttribute from "./ProductAttribute";
+    import RelatedProducts from "./RelatedProducts";
 
     export default {
         props: {
@@ -72,6 +77,7 @@
             tags: Array,
             attributes: Array,
             campaign_tags: Array,
+            related_products: Array,
             pricing: {
                 type: Object,
                 default: () => ({
@@ -85,7 +91,7 @@
                 }),
             },
         },
-        components: {ProductAttribute, ProductFavourite, ProductPricing, ProductTag, CampaignTag, ProductImage},
+        components: {RelatedProducts, ProductAttribute, ProductFavourite, ProductPricing, ProductTag, CampaignTag, ProductImage},
         mixins: [SettingsMixin],
         data: () => ({
             //TODO set to false

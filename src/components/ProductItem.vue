@@ -122,7 +122,7 @@
 
     .product-item {
         font-size: 1rem;
-        max-width: calc(50vw - 1em);
+        max-width: 300px;
 
         margin: .25em;
         padding: .75em;

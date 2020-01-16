@@ -1,6 +1,6 @@
 <template>
     <div class="product-tag" :style="`background-color: ${color};`">
-        <strong class="has-text-centered">{{label}}</strong>
+        <strong class="has-text-centered is-uppercase">{{label}}</strong>
     </div>
 </template>
 
@@ -22,27 +22,26 @@
 
 <style scoped>
     .product-tag {
-        font-size: 1em;
+        font-size: .75em;
 
-        width: 46px;
-        height: 46px;
+        width: 3.9em;
+        height: 3.9em;
 
         /* Vertical center text - parent */
         display: table;
     }
-
-    .product-tag > * {
-        color: white;
-    }
-
+    
     .product-tag strong {
         /* Vertical center text - child */
         display: table-cell;
         vertical-align: middle;
+        
+        color: white;
+        padding: .35em;
     }
 
     .product-tag + .product-tag {
         /* Vertical spacing for multiple tags */
-        margin-top: 5px;
+        margin-top: .35em;
     }
 </style>

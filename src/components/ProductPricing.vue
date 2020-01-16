@@ -5,10 +5,10 @@
             <div class="price-line">
                 <div class="columns is-centered is-variable is-1">
                     <div class="column is-narrow">
-                        <p class="grayed-out-text">de <s>R${{totalValueFrom}}</s></p>
+                        <p class="grayed-out-text">de <s>{{totalValueFrom | formatPrice}}</s></p>
                     </div>
                     <div class="column is-narrow">
-                        <p>por <span class="destak-price">R${{installments.total_value}}</span></p>
+                        <p>por <span class="destak-price">{{installments.total_value | formatPrice}}</span></p>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                         <span class="is-hidden-mobile">ATÉ&nbsp;</span>
                         <span class="destak-color">{{installments.quantity}}X</span>
                         &nbsp;DE&nbsp;
-                        <span class="destak-color">R${{installments.installment_value}}</span>
+                        <span class="destak-color">{{installments.installment_value | formatPrice}}</span>
                     </p>
                 </div>
             </div>
@@ -29,7 +29,7 @@
 
         <div class="cash-down-line">
             <p class="has-text-left-mobile has-text-centered">
-                <span class="destak-price">R${{totalValue}}</span> à vista
+                <span class="destak-price">{{totalValue | formatPrice}}</span> à vista
             </p>
         </div>
     </div>
@@ -64,6 +64,14 @@
                 return this.installments.quantity > 1;
             },
         },
+        filters: {
+            formatPrice(price) {
+                return new Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                }).format(price);
+            },
+        },
     };
 </script>
 
@@ -81,11 +89,12 @@
         @include mobile() {
             /* On mobile size, align text on left */
             text-align: left;
-            
+
             .columns.is-variable.is-1 {
                 :first-child {
                     padding-bottom: 0;
                 }
+
                 :last-child {
                     padding-top: 0;
                 }

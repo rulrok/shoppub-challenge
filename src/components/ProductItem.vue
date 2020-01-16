@@ -19,14 +19,14 @@
                 <p class="has-text-left-mobile has-text-centered">{{title}}</p>
             </div>
         </div>
-        
-        <div v-if="$_show_campaign_tags" class="columns is-centered">
-            <campaign-tag
-                    class="column is-narrow is-8-mobile"
-                    v-for="tag in campaign_tags"
-                    :key="tag.label"
-                    :label="tag.label"
-                    :color="tag.color"/>
+
+        <div class="campaign-tags columns is-centered is-gapless" v-if="$_show_campaign_tags">
+            <div class="column is-narrow is-10-mobile " v-for="tag in campaign_tags">
+                <campaign-tag
+                        :key="tag.label"
+                        :label="tag.label"
+                        :color="tag.color"/>
+            </div>
         </div>
 
         <div class="columns">
@@ -147,6 +147,19 @@
         position: absolute;
         top: .75em;
         left: .75em;
+    }
+
+    .campaign-tags.columns {
+        /* We make the columns gapless and adjust spacing here */
+
+        .column {
+            margin-bottom: .35em;
+            margin-right: .35em;
+        }
+
+        .column:last-child {
+            margin-right: 0;
+        }
     }
 
 </style>

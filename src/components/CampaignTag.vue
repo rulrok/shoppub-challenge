@@ -22,9 +22,10 @@
 
 <style scoped>
     .campaign-tag {
-        padding: .35em .75em;
-        margin: 0 .35em .35em;
+        padding: .75em 2em;
+        line-height: .75em;
         
+        font-size: .75em;
         color: white;
     }
     

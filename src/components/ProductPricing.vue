@@ -1,8 +1,8 @@
 <template>
-    <main class="product-pricing">
+    <div class="product-pricing">
 
         <template v-if="hasDiscount">
-            <section class="price-line">
+            <div class="price-line">
                 <div class="columns is-centered is-variable is-1">
                     <div class="column is-narrow">
                         <p class="grayed-out-text">de <s>R${{totalValueFrom}}</s></p>
@@ -11,11 +11,11 @@
                         <p>por <span class="destak-price">R${{installments.total_value}}</span></p>
                     </div>
                 </div>
-            </section>
+            </div>
         </template>
 
         <template v-if="hasInstallments">
-            <section class="installments-line">
+            <div class="installments-line">
                 <div class="columns is-centered is-gapless is-vcentered">
                     <p>
                         <span class="is-hidden-mobile">ATÉ&nbsp;</span>
@@ -24,13 +24,13 @@
                         <span class="destak-color">R${{installments.installment_value}}</span>
                     </p>
                 </div>
-            </section>
+            </div>
         </template>
 
-        <section class="cash-down-line">
+        <div class="cash-down-line">
             <p><span class="destak-price">R${{totalValue}}</span> à vista</p>
-        </section>
-    </main>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -72,7 +72,7 @@
     @import "node_modules/bulma/sass/utilities/mixins";
 
     /* Line height and margin between sections */
-    main > section {
+    .product-pricing > div {
         line-height: 1.35em;
         margin: .2em 0;
 

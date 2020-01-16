@@ -1,7 +1,7 @@
 <template>
-    <main class="product-item" :class="{'hover' : hover}" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
+    <div class="product-item" :class="{'hover' : hover}" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
 
-        <section class="product-image-gallery columns">
+        <div class="product-image-gallery columns">
             <product-favourite v-if="$_show_favourite_widget" class="fav-product" :product-id="id" :is-favourite-initial="false"/>
 
             <product-image v-for="image in images"
@@ -12,31 +12,31 @@
             <div class="tags" v-if="$_show_tags">
                 <product-tag v-for="tag in tags" :key="tag.label" :label="tag.label" :color="tag.color"/>
             </div>
-        </section>
+        </div>
 
-        <section class="columns">
+        <div class="columns">
             <div class="column">
                 <p>{{title}}</p>
             </div>
-        </section>
+        </div>
         
-        <section v-if="$_show_campaign_tags" class="columns is-mobile is-centered is-5">
+        <div v-if="$_show_campaign_tags" class="columns is-mobile is-centered is-5">
             <campaign-tag
                     class="column is-narrow"
                     v-for="tag in campaign_tags"
                     :key="tag.label"
                     :label="tag.label"
                     :color="tag.color"/>
-        </section>
+        </div>
 
-        <section class="columns">
+        <div class="columns">
             <product-pricing
                     class="column"
                     :total-value="pricing.total_value"
                     :total-value-from="pricing.total_value_from"
                     :installments="pricing.installments"
             />
-        </section>
+        </div>
 
         <availability-widget
                 :product-id="id"
@@ -44,16 +44,16 @@
                 :maxAvailabilityInitial="availability.quantity" />
 
         <!-- This section will only be used for hover component -->
-        <section class="attributes columns is-centered is-mobile">
+        <div class="attributes columns is-centered is-mobile">
             <product-attribute
                     class="column is-narrow"
                     v-for="attribute in attributes" :key="attribute.id" :id="attribute.id" :label="attribute.label"/>
-        </section>
+        </div>
         
-        <section class="related-products">
+        <div class="related-products">
             <related-products :products="related_products" :highlight_product_id="id" />
-        </section>
-    </main>
+        </div>
+    </div>
 </template>
 <script>
 

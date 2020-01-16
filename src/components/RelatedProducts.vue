@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <div>
         <div class="columns is-mobile is-vcentered">
             
             <!-- Left side -->
@@ -39,7 +39,7 @@
                 </button>
             </div>
         </div>
-    </main>
+    </div>
 </template>
 
 <script>

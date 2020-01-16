@@ -1,6 +1,6 @@
 <template>
     <div class="product-tag" :style="`background-color: ${color};`">
-        <strong>{{label}}</strong>
+        <strong class="has-text-centered">{{label}}</strong>
     </div>
 </template>
 

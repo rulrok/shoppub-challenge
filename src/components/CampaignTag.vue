@@ -1,5 +1,5 @@
 <template>
-    <div class="campaign-tag" :style="`background-color: ${color}; color: white;`">
+    <div class="campaign-tag has-text-centered" :style="`background-color: ${color};`">
         {{label}}
     </div>
 </template>
@@ -23,9 +23,9 @@
 <style scoped>
     .campaign-tag {
         padding: .35em .75em;
+        margin: 0 .35em .35em;
+        
+        color: white;
     }
     
-    .campaign-tag + .campaign-tag {
-        margin-left: .35em;
-    }
 </style>

@@ -16,13 +16,13 @@
 
         <div class="columns">
             <div class="column">
-                <p>{{title}}</p>
+                <p class="has-text-left-mobile has-text-centered">{{title}}</p>
             </div>
         </div>
         
-        <div v-if="$_show_campaign_tags" class="columns is-mobile is-centered is-5">
+        <div v-if="$_show_campaign_tags" class="columns is-centered">
             <campaign-tag
-                    class="column is-narrow"
+                    class="column is-narrow is-8-mobile"
                     v-for="tag in campaign_tags"
                     :key="tag.label"
                     :label="tag.label"
@@ -41,7 +41,7 @@
         <availability-widget
                 :product-id="id"
                 :is-available="availability.is_available"
-                :maxAvailabilityInitial="availability.quantity" />
+                :maxAvailabilityInitial="availability.quantity"/>
 
         <!-- This section will only be used for hover component -->
         <div class="attributes columns is-centered is-mobile">
@@ -49,9 +49,9 @@
                     class="column is-narrow"
                     v-for="attribute in attributes" :key="attribute.id" :id="attribute.id" :label="attribute.label"/>
         </div>
-        
+
         <div class="related-products">
-            <related-products :products="related_products" :highlight_product_id="id" />
+            <related-products :products="related_products" :highlight_product_id="id"/>
         </div>
     </div>
 </template>
@@ -103,17 +103,17 @@
             hover: true,
         }),
         methods: {
-            onMouseOver(){
+            onMouseOver() {
                 //TODO remove return
                 return;
                 this.hover = true;
             },
-            onMouseLeave(){
+            onMouseLeave() {
                 //TODO remove return
                 return;
                 this.hover = false;
-            }
-        }
+            },
+        },
     };
 </script>
 <style scoped lang="scss">
@@ -122,10 +122,10 @@
 
     .product-item {
         font-size: 1rem;
-        max-width: 300px;
+        max-width: calc(50vw - 1em);
 
-        margin: .75em;
-        padding: 10px;
+        margin: .25em;
+        padding: .75em;
 
         border: 1px solid $border-color;
         border-radius: 5px;
@@ -148,15 +148,15 @@
         top: .75em;
         left: .75em;
     }
-    
+
 </style>
 
 <style lang="scss">
     /* Style for toggling attributes on element not hover */
-    
+
     .product-item:not(.hover) {
         .attributes, .related-products {
-            display: none;    
+            display: none;
         }
     }
 </style>

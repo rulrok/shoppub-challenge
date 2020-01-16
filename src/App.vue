@@ -1,18 +1,21 @@
 <template>
-    <main id="app">
+    <section class="section" id="app">
         <template v-if="$_product_list_configured">
+            <div class="container">
 
-            <section class="columns is-mobile">
-                <template v-if="!products$loading">
-                    <product-item class="column is-half-mobile is-one-third-desktop" v-for="product in products" :key="product.id" v-bind="product"/>
-                </template>
-                <template v-else>
-                    <p>Carregando...</p>
-                </template>
-            </section>
+                <div class="columns is-centered is-mobile">
+                    <template v-if="!products$loading">
+                        <product-item class="column is-half-mobile is-one-third-desktop" v-for="product in products" :key="product.id"
+                                      v-bind="product"/>
+                    </template>
+                    <template v-else>
+                        <p>Carregando...</p>
+                    </template>
+                </div>
+            </div>
 
         </template>
-    </main>
+    </section>
 </template>
 
 <script>
@@ -51,21 +54,28 @@
     }
 </style>
 
-<style>
+<style lang="scss">
+
+    @import "node_modules/bulma/sass/utilities/_all.sass";
+    @import "node_modules/bulma/sass/base/_all.sass";
+    @import "node_modules/bulma/sass/utilities/mixins";
+
     html, body {
-        font-size: 14px;
+        font-size: 16px;
+
+        @include mobile() {
+            font-size: 13px;
+        }
     }
 
     #app {
         font-family: 'Roboto', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
         margin-top: 60px;
     }
 
     * {
-        /*border: 1px dashed #000;*/
+        /*border: 0.5px dashed #000;*/
     }
 </style>

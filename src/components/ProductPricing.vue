@@ -28,7 +28,9 @@
         </template>
 
         <div class="cash-down-line">
-            <p><span class="destak-price">R${{totalValue}}</span> à vista</p>
+            <p class="has-text-left-mobile has-text-centered">
+                <span class="destak-price">R${{totalValue}}</span> à vista
+            </p>
         </div>
     </div>
 </template>

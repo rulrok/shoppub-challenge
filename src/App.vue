@@ -2,9 +2,9 @@
     <main id="app">
         <template v-if="$_product_list_configured">
 
-            <section>
+            <section class="columns is-mobile">
                 <template v-if="!products$loading">
-                    <product-item v-for="product in products" :key="product.id" v-bind="product"/>
+                    <product-item class="column is-half-mobile is-one-third-desktop" v-for="product in products" :key="product.id" v-bind="product"/>
                 </template>
                 <template v-else>
                     <p>Carregando...</p>

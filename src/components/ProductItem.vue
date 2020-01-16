@@ -19,7 +19,7 @@
                 <p>{{title}}</p>
             </div>
         </section>
-
+        
         <section v-if="$_show_campaign_tags" class="columns is-mobile is-centered is-5">
             <campaign-tag
                     class="column is-narrow"
@@ -37,6 +37,11 @@
                     :installments="pricing.installments"
             />
         </section>
+
+        <availability-widget
+                :product-id="id"
+                :is-available="availability.is_available"
+                :maxAvailabilityInitial="availability.quantity" />
 
         <!-- This section will only be used for hover component -->
         <section class="attributes columns is-centered is-mobile">
@@ -63,6 +68,7 @@
     import { SettingsMixin } from "../mixins";
     import ProductAttribute from "./ProductAttribute";
     import RelatedProducts from "./RelatedProducts";
+    import AvailabilityWidget from "./AvailabilityWidget";
 
     export default {
         props: {
@@ -76,6 +82,7 @@
             attributes: Array,
             campaign_tags: Array,
             related_products: Array,
+            availability: Object,
             pricing: {
                 type: Object,
                 default: () => ({
@@ -89,7 +96,7 @@
                 }),
             },
         },
-        components: {RelatedProducts, ProductAttribute, ProductFavourite, ProductPricing, ProductTag, CampaignTag, ProductImage},
+        components: {AvailabilityWidget, RelatedProducts, ProductAttribute, ProductFavourite, ProductPricing, ProductTag, CampaignTag, ProductImage},
         mixins: [SettingsMixin],
         data: () => ({
             //TODO set to false

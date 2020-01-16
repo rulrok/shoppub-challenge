@@ -3,8 +3,8 @@
         <template v-if="$_product_list_configured">
 
             <template v-if="!products$loading">
-                <section class="columns is-centered">
-                    <product-item class="column" v-for="product in products" :key="product.id" v-bind="product" />
+                <section>
+                    <product-item v-for="product in products" :key="product.id" v-bind="product" />
                 </section>
             </template>
             
@@ -63,6 +63,6 @@
     }
     
     * {
-        border: 1px dashed #000;
+        /*border: 1px dashed #000;*/
     }
 </style>

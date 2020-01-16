@@ -1,15 +1,18 @@
 <template>
-    <div id="app">
+    <main id="app">
         <template v-if="$_product_list_configured">
 
-            <template v-if="!products$loading">
-                <section>
-                    <product-item v-for="product in products" :key="product.id" v-bind="product" />
-                </section>
-            </template>
-            
+            <section>
+                <template v-if="!products$loading">
+                    <product-item v-for="product in products" :key="product.id" v-bind="product"/>
+                </template>
+                <template v-else>
+                    <p>Carregando...</p>
+                </template>
+            </section>
+
         </template>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -39,12 +42,12 @@
 
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-    
+
     @import "src/styles/custom-bulma";
     @import "src/styles/variables";
-    
+
     * {
-        color : $base-color-dark;
+        color: $base-color-dark;
     }
 </style>
 
@@ -52,7 +55,7 @@
     html, body {
         font-size: 14px;
     }
-    
+
     #app {
         font-family: 'Roboto', sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -61,7 +64,7 @@
         color: #2c3e50;
         margin-top: 60px;
     }
-    
+
     * {
         /*border: 1px dashed #000;*/
     }

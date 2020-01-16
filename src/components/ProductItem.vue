@@ -122,9 +122,9 @@
 
     .product-item {
         font-size: 1rem;
+        
         max-width: 300px;
-
-        margin: .25em;
+        
         padding: .75em;
 
         border: 1px solid $border-color;

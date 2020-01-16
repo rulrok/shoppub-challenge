@@ -5,8 +5,12 @@
 
                 <div class="columns is-centered is-mobile">
                     <template v-if="!products$loading">
-                        <product-item class="column is-half-mobile is-one-third-desktop" v-for="product in products" :key="product.id"
-                                      v-bind="product"/>
+                        <div class="column is-half-mobile is-one-third-tablet is-one-fifth-desktop is-narrow"
+                             v-for="product in products">
+
+                            <product-item :key="product.id" v-bind="product"/>
+                        </div>
+
                     </template>
                     <template v-else>
                         <p>Carregando...</p>
@@ -72,7 +76,9 @@
         font-family: 'Roboto', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        margin-top: 60px;
+        margin: 60px 5px;
+        padding: 0 5px;
+        width: 100vw;
     }
 
     * {

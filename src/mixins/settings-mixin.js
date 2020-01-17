@@ -22,6 +22,9 @@ export default {
         $_attribute_widget_type() {
             return this.$_product_list_settings["attribute_widget_type"] || NaN;
         },
+        $_show_availability_widget() {
+            return this.$_product_list_settings["show_availability_widget"] || false;
+        },
         $_product_list_configured() {
             try {
                 return this.$_settings.layout.product.list;

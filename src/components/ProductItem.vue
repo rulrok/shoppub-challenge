@@ -59,10 +59,23 @@
             </div>
         </div>
 
-        <availability-widget
-                :product-id="id"
-                :is-available="availability.is_available"
-                :maxAvailabilityInitial="availability.quantity"/>
+        <div class="columns">
+            <div class="column">
+
+                <template v-if="$_show_availability_widget">
+                    <availability-widget
+                            :product-id="id"
+                            :is-available="availability.is_available"
+                            :maxAvailabilityInitial="availability.quantity"/>
+                </template>
+
+                <template v-else>
+                    <buy-see-product :product-id="id" :product-name="title"/>
+                </template>
+
+            </div>
+        </div>
+        
     </div>
 </template>
 <script>
@@ -79,6 +92,7 @@
     import ProductPricing from "./ProductPricing";
     import ProductTag from "./ProductTag";
     import RelatedProducts from "./RelatedProducts";
+    import BuySeeProduct from "./BuySeeProduct";
 
     export default {
         props: {
@@ -107,6 +121,7 @@
             },
         },
         components: {
+            BuySeeProduct,
             AvailabilityWidget,
             CampaignTag,
             ProductAttributes,

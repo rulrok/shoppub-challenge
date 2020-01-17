@@ -3,6 +3,7 @@
         <!-- non-mobile input left side -->
         <div class="column is-narrow is-hidden-mobile">
             <input
+                    readonly
                     class="quantity-input"
                     type="text" step="1" min="1" :max="maxAvailability"
                     v-model="selectedQuantity">

@@ -90,6 +90,10 @@
     @import "node_modules/bulma/sass/base/_all.sass";
     @import "node_modules/bulma/sass/utilities/mixins";
 
+    button {
+        cursor: pointer;
+    }
+    
     $spacing: .33em;
     $basic-input-height: 3.3em + $spacing;
     $mobile-input-height: 2em;

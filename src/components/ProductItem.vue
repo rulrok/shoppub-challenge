@@ -66,16 +66,20 @@
                     <availability-widget
                             :product-id="id"
                             :is-available="availability.is_available"
-                            :maxAvailabilityInitial="availability.quantity"/>
+                            :maxAvailabilityInitial="availability.quantity"
+                            @add-product="tryAddToCart"
+                    />
                 </template>
 
                 <template v-else>
-                    <buy-see-product :product-id="id" :product-name="title"/>
+                    <buy-see-product :product-id="id" :product-name="title"
+                                     @add-product="tryAddToCart"
+                    />
                 </template>
 
             </div>
         </div>
-        
+
     </div>
 </template>
 <script>
@@ -85,6 +89,7 @@
 
     //Sub-components
     import AvailabilityWidget from "./AvailabilityWidget";
+    import BuySeeProduct from "./BuySeeProduct";
     import CampaignTag from "./CampaignTag";
     import ProductAttributes from "./ProductAttributes";
     import ProductFavourite from "./ProductFavourite";
@@ -92,7 +97,6 @@
     import ProductPricing from "./ProductPricing";
     import ProductTag from "./ProductTag";
     import RelatedProducts from "./RelatedProducts";
-    import BuySeeProduct from "./BuySeeProduct";
 
     export default {
         props: {
@@ -121,8 +125,8 @@
             },
         },
         components: {
-            BuySeeProduct,
             AvailabilityWidget,
+            BuySeeProduct,
             CampaignTag,
             ProductAttributes,
             ProductFavourite,
@@ -147,6 +151,19 @@
                 //TODO remove return
                 return;
                 this.hover = false;
+            },
+            tryAddToCart() {
+                if (this.selectedAttributes.length === 0) {
+                    alert("Selecione um tamanho");
+                    return;
+                }
+
+                this.$emit("add-to-cart", {
+                    id: this.id,
+                    attributes: this.selectedAttributes.map(att => ({
+                        id: att,
+                    })),
+                });
             },
         },
     };

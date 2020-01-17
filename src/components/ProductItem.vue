@@ -45,10 +45,12 @@
                     <div class="columns is-centered is-gapless">
                         <div class="column is-narrow" v-for="attribute in attributes">
                             <product-attribute :key="attribute.id"
-                                               :id="attribute.id" 
+                                               :id="attribute.id"
                                                :label="attribute.label"
                                                :product-id="id"
                                                :widget-type="$_attribute_widget_type"
+                                               @attribute-selected="selectAttribute"
+                                               @attribute-unselected="unselectAttribute"
                             />
                         </div>
                     </div>
@@ -116,8 +118,15 @@
         data: () => ({
             //TODO set to false
             hover: true,
+            selectedAttributes: [],
         }),
         methods: {
+            selectAttribute({id}) {
+                this.selectedAttributes.push(id);
+            },
+            unselectAttribute({id}) {
+                this.selectedAttributes = this.selectedAttributes.filter(val => val !== id);
+            },
             onMouseOver() {
                 //TODO remove return
                 return;

@@ -1,6 +1,6 @@
 <template>
     <label class="product-attribute">
-        <input class="is-hidden" :type="radioType" :name="groupName">
+        <input class="is-hidden" :type="radioType" :name="groupName" @change="changed" v-model="selected">
         <span>{{label}}</span>
     </label>
 </template>
@@ -27,6 +27,18 @@
                 validator(value) {
                     return [1, 2].includes(value);
                 },
+            },
+        },
+        data: () => ({
+            selected: false,
+        }),
+        methods: {
+            changed() {
+                if (this.selected) {
+                    this.$emit("attribute-selected", {id: this.id});
+                } else {
+                    this.$emit("attribute-unselected", {id: this.id});
+                }
             },
         },
         computed: {

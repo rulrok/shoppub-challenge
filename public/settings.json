@@ -5,7 +5,7 @@
       "list": {
         "attribute_widget_type": 2,
         "show_related_products": true,
-        "show_availability_widget": false,
+        "show_availability_widget": true,
         "show_favorite_widget": true,
         "show_tags": true,
         "show_campaign_tags": true

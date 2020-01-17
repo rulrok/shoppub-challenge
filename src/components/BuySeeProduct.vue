@@ -1,7 +1,7 @@
 <template>
     <div class="columns is-gapless">
         <div class="column is-three-fifths">
-            <button class="buy-button is-uppercase" @click="add_product">Comprar</button>
+            <button class="buy-button is-uppercase" @click="$_addProduct(1)">Comprar</button>
         </div>
         <div class="column is-hidden-mobile">
             <a :href="productUrl" class="see-button">
@@ -12,8 +12,11 @@
 </template>
 
 <script>
+    import { AddProductMixin } from "../mixins/add-product-quantity-mixin";
+
     export default {
         name: "BuySeeProduct",
+        mixins: [AddProductMixin],
         props: {
             productId: {
                 type: Number,
@@ -25,9 +28,6 @@
             },
         },
         methods: {
-            addProduct() {
-                this.$emit("add-product", {id: this.productId, quantity: 1});
-            },
             slugString(input) {
                 return (input || "") && input.toLowerCase().replace(/\s+/ig, "-");
             },

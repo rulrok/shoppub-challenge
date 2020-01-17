@@ -30,14 +30,17 @@
 
         <!-- Add button right/bottom side -->
         <div class="column">
-            <button class="add-quantity" @click="addQuantity">ADICIONAR</button>
+            <button class="add-quantity" @click="$_addProduct(selectedQuantity)">ADICIONAR</button>
         </div>
     </div>
 </template>
 
 <script>
+    import { AddProductMixin } from "../mixins/add-product-quantity-mixin";
+
     export default {
         name: "AvailabilityWidget",
+        mixins: [AddProductMixin],
         props: {
             productId: {
                 type: Number,
@@ -64,9 +67,6 @@
             },
             decreaseQuantity() {
                 this.selectedQuantity = Math.max(1, this.selectedQuantity - 1);
-            },
-            addQuantity() {
-                this.$emit("add-product", {productId: this.productId, quantity: this.selectedQuantity});
             },
         },
     };

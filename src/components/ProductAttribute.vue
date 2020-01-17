@@ -1,7 +1,8 @@
 <template>
-    <div class="product-attribute">
-        <p>{{label}}</p>
-    </div>
+    <label class="product-attribute">
+        <input class="is-hidden" :type="radioType" :name="groupName">
+        <span>{{label}}</span>
+    </label>
 </template>
 
 <script>
@@ -16,6 +17,28 @@
                 type: String,
                 required: true,
             },
+            productId: {
+                type: Number,
+                required: true,
+            },
+            widgetType: {
+                type: Number,
+                required: true,
+                validator(value) {
+                    return [1, 2].includes(value);
+                },
+            },
+        },
+        computed: {
+            groupName() {
+                return `prod-tag-${this.productId}`;
+            },
+            radioType() {
+                if (this.widgetType === 1)
+                    return "radio";
+
+                return "checkbox";
+            },
         },
     };
 </script>
@@ -23,18 +46,31 @@
 <style scoped lang="scss">
     @import "src/styles/variables";
 
-    .product-attribute {
-        border: 1px solid $border-color;
+    label.product-attribute {
+
+        cursor: pointer;
+        border: none;
 
         font-size: .75em;
-        
+
         margin: 0.2em;
-        padding: 0.5em;
-        
-        p {
-            width: inherit;
-            height: auto;
+
+        span {
+            padding: 0.5em;
+            border: 1px solid $border-color;
         }
 
+        span:hover {
+            border-color: $primary-color;
+            color: $primary-color;
+        }
+    }
+
+    input[type=radio]:checked, input[type=checkbox]:checked {
+        & + span {
+            color: white;
+            background-color: $primary-color;
+            border-color: $primary-color;
+        }
     }
 </style>

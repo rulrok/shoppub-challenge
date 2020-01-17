@@ -38,18 +38,18 @@
             />
         </div>
 
-        <availability-widget
-                :product-id="id"
-                :is-available="availability.is_available"
-                :maxAvailabilityInitial="availability.quantity"/>
-
         <!-- This section will only be used for hover component -->
         <div class="columns">
             <div class="column">
                 <div class="attributes is-hidden-mobile">
                     <div class="columns is-centered is-gapless">
                         <div class="column is-narrow" v-for="attribute in attributes">
-                            <product-attribute :key="attribute.id" :id="attribute.id" :label="attribute.label"/>
+                            <product-attribute :key="attribute.id"
+                                               :id="attribute.id" 
+                                               :label="attribute.label"
+                                               :product-id="id"
+                                               :widget-type="$_attribute_widget_type"
+                            />
                         </div>
                     </div>
                 </div>
@@ -63,6 +63,11 @@
                 </div>
             </div>
         </div>
+
+        <availability-widget
+                :product-id="id"
+                :is-available="availability.is_available"
+                :maxAvailabilityInitial="availability.quantity"/>
     </div>
 </template>
 <script>

@@ -3,7 +3,7 @@
   "layout": {
     "product": {
       "list": {
-        "attribute_widget_type": 1,
+        "attribute_widget_type": 2,
         "show_related_products": true,
         "show_availability_widget": true,
         "show_favorite_widget": true,

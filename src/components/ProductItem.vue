@@ -67,18 +67,18 @@
 </template>
 <script>
 
-    //Sub-components
-    import ProductImage from "./ProductImages";
-    import CampaignTag from "./CampaignTag";
-    import ProductTag from "./ProductTag";
-    import ProductPricing from "./ProductPricing";
-    import ProductFavourite from "./ProductFavourite";
-
     //Mixins
     import { SettingsMixin } from "../mixins";
-    import RelatedProducts from "./RelatedProducts";
+
+    //Sub-components
     import AvailabilityWidget from "./AvailabilityWidget";
+    import CampaignTag from "./CampaignTag";
     import ProductAttributes from "./ProductAttributes";
+    import ProductFavourite from "./ProductFavourite";
+    import ProductImage from "./ProductImages";
+    import ProductPricing from "./ProductPricing";
+    import ProductTag from "./ProductTag";
+    import RelatedProducts from "./RelatedProducts";
 
     export default {
         props: {

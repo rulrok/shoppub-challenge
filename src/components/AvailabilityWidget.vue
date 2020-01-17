@@ -63,22 +63,10 @@
                 this.selectedQuantity = Math.min(this.maxAvailability, this.selectedQuantity + 1);
             },
             decreaseQuantity() {
-                this.selectedQuantity = Math.min(this.maxAvailability, Math.max(1, this.selectedQuantity - 1));
+                this.selectedQuantity = Math.max(1, this.selectedQuantity - 1);
             },
             addQuantity() {
-
-                if (this.selectedQuantity > 0) {
-
-                    this.$emit("add-product", {productId: this.productId, quantity: this.selectedQuantity});
-
-                    this.maxAvailability -= this.selectedQuantity;
-                    this.selectedQuantity = Math.min(this.maxAvailability, 1);
-                }
-
-                if (this.maxAvailability === 0) {
-                    this.$emit("product-unavailable", {productId: this.productId});
-                    this.selectedQuantity = 0;
-                }
+                this.$emit("add-product", {productId: this.productId, quantity: this.selectedQuantity});
             },
         },
     };
@@ -94,7 +82,7 @@
     button {
         cursor: pointer;
     }
-    
+
     $spacing: .33em;
     $basic-input-height: 3.3em + $spacing;
     $mobile-input-height: 2em;

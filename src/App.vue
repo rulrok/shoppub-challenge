@@ -78,7 +78,6 @@
         -moz-osx-font-smoothing: grayscale;
         margin: 60px 5px;
         padding: 0 5px;
-        width: 100vw;
     }
 
     * {

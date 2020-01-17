@@ -1,25 +1,28 @@
 <template>
-    <label class="product-attribute">
-        <input class="is-hidden" :type="radioType" :name="groupName" @change="changed" v-model="selected">
-        <span>{{label}}</span>
-    </label>
+    <div class="columns is-centered is-gapless">
+        <div class="column is-narrow" v-for="attribute in attributes"
+             :key="attribute.id"
+        >
+            <label class="product-attribute">
+                <input class="is-hidden"
+                       :type="inputType" :name="groupName"
+                       :value="attribute.id" v-model="selectedAttributes">
+                <span>{{attribute.label}}</span>
+            </label>
+        </div>
+    </div>
 </template>
 
 <script>
     export default {
-        name: "ProductAttribute",
+        name: "ProductAttributes",
         props: {
-            id: {
-                type: Number,
-                required: true,
-            },
-            label: {
-                type: String,
-                required: true,
-            },
             productId: {
                 type: Number,
                 required: true,
+            },
+            attributes: {
+                type: Array,
             },
             widgetType: {
                 type: Number,
@@ -30,22 +33,22 @@
             },
         },
         data: () => ({
-            selected: false,
+            selectedAttributes: [],
         }),
-        methods: {
-            changed() {
-                if (this.selected) {
-                    this.$emit("attribute-selected", {id: this.id});
-                } else {
-                    this.$emit("attribute-unselected", {id: this.id});
+        watch: {
+            selectedAttributes(newValue) {
+                if (!Array.isArray(newValue)) {
+                    newValue = [newValue];
                 }
+
+                this.$emit("selected-attributes", newValue);
             },
         },
         computed: {
             groupName() {
                 return `prod-tag-${this.productId}`;
             },
-            radioType() {
+            inputType() {
                 if (this.widgetType === 1)
                     return "radio";
 

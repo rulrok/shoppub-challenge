@@ -177,12 +177,12 @@
       }
     ],
     "pricing": {
-      "total_value": 50.00,
-      "total_value_from": 200.00,
+      "total_value": 75.00,
+      "total_value_from": 150.00,
       "installments": {
-        "quantity": 10,
-        "installment_value": 10.00,
-        "total_value": 100.00
+        "quantity": 7,
+        "installment_value": 15.50,
+        "total_value": 108.50
       }
     }
   }

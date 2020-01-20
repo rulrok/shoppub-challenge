@@ -87,10 +87,6 @@
     $basic-input-height: 3.3em + $spacing;
     $mobile-input-height: 2em;
 
-    .availability-widget {
-        max-height: $basic-input-height;
-    }
-
     .availability-widget .column.is-2-tablet > .quantity-control-container > .columns > .column.is-hidden-tablet {
         /* Spacing for number input on mobile size */
         padding: 0 $spacing !important;

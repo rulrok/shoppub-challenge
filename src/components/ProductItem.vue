@@ -2,10 +2,13 @@
     <div class="product-item" :class="{'hover' : hover}" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
 
         <div class="product-image-gallery columns">
-            <product-favourite v-if="$_show_favourite_widget" class="fav-product" :product-id="id" :is-favourite-initial="false"/>
+            <product-favourite v-if="$_show_favourite_widget" class="fav-product"
+                               :product-id="id"
+                               :is-favourite-initial="false"
+            />
 
             <product-image v-for="image in images"
-                           class="column"
+                           class="column images"
                            :key="image.cover"
                            :cover="image.cover" :hover="image.hover" :alt="title"/>
 
@@ -189,20 +192,26 @@ return;
 
     .product-image-gallery {
         position: relative;
-    }
 
-    /* Float product tags over image */
-    .product-image-gallery .tags {
-        position: absolute;
-        top: .75em;
-        right: .75em;
-    }
+        .images {
+            z-index: 1000;
+        }
 
-    /* Float product favourite start to right side */
-    .product-image-gallery .fav-product {
-        position: absolute;
-        top: .75em;
-        left: .75em;
+        /* Float product tags over image */
+        .tags {
+            z-index: 2000;
+            position: absolute;
+            top: .75em;
+            right: .75em;
+        }
+
+        /* Float product favourite start to right side */
+        .fav-product {
+            z-index: 2000;
+            position: absolute;
+            top: .75em;
+            left: .75em;
+        }
     }
 
     .campaign-tags.columns {

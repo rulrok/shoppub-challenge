@@ -55,17 +55,19 @@
             </div>
         </div>
 
-        <div class="columns is-gapless is-hidden-mobile">
-            <div class="column is-full">
-                <div class="related-products">
-                    <related-products
-                            v-if="hover"
-                            :products="related_products"
-                            :highlight_product_id="id"
-                    />
+        <template v-if="$_show_related_products">
+            <div class="columns is-gapless is-hidden-mobile">
+                <div class="column is-full">
+                    <div class="related-products">
+                        <related-products
+                                v-if="hover"
+                                :products="related_products"
+                                :highlight_product_id="id"
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
+        </template>
 
         <div class="columns">
             <div class="column">
@@ -148,17 +150,14 @@
         },
         mixins: [SettingsMixin],
         data: () => ({
-            //TODO set to false
             hover: true,
             selectedAttributes: [],
         }),
         methods: {
             onMouseOver() {
-return;
                 this.hover = true;
             },
             onMouseLeave() {
-                return;
                 this.hover = false;
             },
             addToCart(quantity) {

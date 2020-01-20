@@ -5,10 +5,10 @@
 
                 <div class="columns is-centered is-mobile">
                     <template v-if="!products$loading">
-                        <div class="column is-half-mobile is-one-third-tablet is-one-fifth-desktop is-narrow"
+                        <div class="column is-half-mobile is-one-third-tablet is-narrow"
                              v-for="product in products">
 
-                            <product-item :key="product.id" v-bind="product"/>
+                            <product-item :key="product.id" v-bind="product" @add-to-cart="addToCart"/>
                         </div>
 
                     </template>
@@ -43,6 +43,12 @@
         mixins: [SettingsMixin],
         components: {
             ProductItem,
+        },
+        methods: {
+            addToCart({id, quantity, attributes = {}}) {
+
+                alert(`Adicionado ${quantity} produto(s) (id ${id}). Atributo(s): ${attributes.map(a => a.id)}`);
+            },
         },
     };
 </script>

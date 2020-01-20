@@ -25,7 +25,8 @@
                 <campaign-tag
                         :key="tag.label"
                         :label="tag.label"
-                        :color="tag.color"/>
+                        :color="tag.color"
+                />
             </div>
         </div>
 
@@ -42,11 +43,11 @@
         <div class="attributes columns is-hidden-mobile">
             <div class="column">
                 <product-attributes
+                        v-if="hover"
                         :product-id="id"
                         :attributes="attributes"
                         :widget-type="$_attribute_widget_type"
                         @selected-attributes="selectedAttributes = $event"
-
                 />
             </div>
         </div>
@@ -54,7 +55,10 @@
         <div class="columns is-gapless is-hidden-mobile">
             <div class="column is-full">
                 <div class="related-products">
-                    <related-products :products="related_products" :highlight_product_id="id"/>
+                    <related-products
+                            :products="related_products"
+                            :highlight_product_id="id"
+                    />
                 </div>
             </div>
         </div>
@@ -64,16 +68,19 @@
 
                 <template v-if="$_show_availability_widget">
                     <availability-widget
+                            v-if="hover"
                             :product-id="id"
                             :is-available="availability.is_available"
                             :maxAvailabilityInitial="availability.quantity"
-                            @add-product="tryAddToCart"
+                            @add-product="addToCart"
                     />
                 </template>
 
                 <template v-else>
-                    <buy-see-product :product-id="id" :product-name="title"
-                                     @add-product="tryAddToCart"
+                    <buy-see-product v-if="hover"
+                                     :product-id="id"
+                                     :product-name="title"
+                                     @add-product="addToCart"
                     />
                 </template>
 
@@ -138,32 +145,28 @@
         mixins: [SettingsMixin],
         data: () => ({
             //TODO set to false
-            hover: true,
+            hover: false,
             selectedAttributes: [],
         }),
         methods: {
             onMouseOver() {
-                //TODO remove return
-                return;
+
                 this.hover = true;
             },
             onMouseLeave() {
-                //TODO remove return
-                return;
+
                 this.hover = false;
             },
-            tryAddToCart() {
-                if (this.selectedAttributes.length === 0) {
-                    alert("Selecione um tamanho");
-                    return;
-                }
-
+            addToCart(quantity) {
                 this.$emit("add-to-cart", {
                     id: this.id,
                     attributes: this.selectedAttributes.map(att => ({
                         id: att,
                     })),
+                    quantity: quantity.quantity,
                 });
+
+                this.selectedAttributes = [];
             },
         },
     };

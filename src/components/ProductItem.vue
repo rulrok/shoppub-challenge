@@ -56,6 +56,7 @@
             <div class="column is-full">
                 <div class="related-products">
                     <related-products
+                            v-if="hover"
                             :products="related_products"
                             :highlight_product_id="id"
                     />
@@ -145,16 +146,16 @@
         mixins: [SettingsMixin],
         data: () => ({
             //TODO set to false
-            hover: false,
+            hover: true,
             selectedAttributes: [],
         }),
         methods: {
             onMouseOver() {
-
+return;
                 this.hover = true;
             },
             onMouseLeave() {
-
+                return;
                 this.hover = false;
             },
             addToCart(quantity) {

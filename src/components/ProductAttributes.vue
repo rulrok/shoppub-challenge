@@ -1,5 +1,5 @@
 <template>
-    <div class="columns is-centered is-gapless">
+    <div class="columns is-centered is-gapless is-multiline">
         <div class="column is-narrow" v-for="attribute in attributes"
              :key="attribute.id"
         >
@@ -61,6 +61,10 @@
 <style scoped lang="scss">
     @import "src/styles/variables";
 
+    div.columns.is-gapless > .column {
+        margin-top: 0.5em!important;    
+    }
+    
     label.product-attribute {
 
         cursor: pointer;

@@ -2,6 +2,7 @@
     <div class="product-item" :class="{'hover'  :  hover}" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
         <div class="product-item-container is-unselectable">
 
+            <!-- Image container row -->
             <div class="product-image-gallery columns">
                 <product-favourite v-if="$_show_favourite_widget"
                                    class="fav-product"
@@ -19,12 +20,14 @@
                 </div>
             </div>
 
+            <!-- Product title row -->
             <div class="columns">
                 <div class="column">
                     <p class="has-text-left-mobile has-text-centered">{{title}}</p>
                 </div>
             </div>
 
+            <!-- Campaign tags row -->
             <div class="campaign-tags columns is-centered is-gapless" v-if="$_show_campaign_tags">
                 <div class="column is-narrow is-10-mobile " v-for="tag in campaign_tags">
                     <campaign-tag
@@ -35,6 +38,7 @@
                 </div>
             </div>
 
+            <!-- Product pricing row -->
             <div class="columns">
                 <product-pricing
                         class="column"
@@ -44,9 +48,10 @@
                 />
             </div>
 
-            <!-- This section will only be used for hover component -->
+            <!-- Attributes row -->
             <div class="attributes columns is-hidden-mobile">
                 <div class="column">
+
                     <product-attributes
                             v-if="hover"
                             :product-id="id"
@@ -54,24 +59,27 @@
                             :widget-type="$_attribute_widget_type"
                             @selected-attributes="selectedAttributes = $event"
                     />
+
                 </div>
             </div>
 
+            <!-- Related products row -->
             <template v-if="$_show_related_products">
-                <div class="columns is-gapless is-hidden-mobile">
+                <div class="related-products columns is-gapless is-hidden-mobile">
                     <div class="column is-full">
-                        <div class="related-products">
-                            <related-products
-                                    v-if="hover"
-                                    :products="related_products"
-                                    :highlight_product_id="id"
-                            />
-                        </div>
+
+                        <related-products
+                                v-if="hover"
+                                :products="related_products"
+                                :highlight_product_id="id"
+                        />
+
                     </div>
                 </div>
             </template>
 
-            <div class="columns availability">
+            <!-- Availability row -->
+            <div class="availability columns">
                 <div class="column">
 
                     <template v-if="$_show_availability_widget">
@@ -191,8 +199,8 @@
         max-width: 300px;
 
         padding: .75em;
-        
-        @include mobile(){
+
+        @include mobile() {
             padding: .35em;
         }
 
@@ -259,6 +267,9 @@
         .product-item:not(.hover) {
             .attributes, .related-products, .availability {
                 display: none;
+                visibility: hidden;
+                width: 0;
+                height: 0;
             }
         }
     }

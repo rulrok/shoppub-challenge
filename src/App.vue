@@ -5,6 +5,7 @@
 
                 <div class="columns is-centered is-mobile is-multiline">
                     <template v-if="!products$loading">
+                        
                         <div class="column is-half-mobile is-one-third-desktop is-half-tablet is-narrow"
                              v-for="product in products">
 
@@ -13,6 +14,9 @@
                                     v-bind="product"
                                     @add-to-cart="addToCart"/>
                         </div>
+                        
+                        <!-- Empty column to auto left align last row  -->
+                        <div class="column"></div>
 
                     </template>
                     <template v-else>

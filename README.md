@@ -1,5 +1,18 @@
 # Shoppub code challenge
 
+- [Shoppub code challenge](#shoppub-code-challenge)
+  * [Estrutura do projeto](#estrutura-do-projeto)
+    + [Modo desenvolvimento](#modo-desenvolvimento)
+    + [Modo produção](#modo-produ--o)
+- [Componentes](#componentes)
+  * [*Hover* e personalizaçào](#-hover--e-personaliza--o)
+- [Settings mixin](#settings-mixin)
+- [Dependências](#depend-ncias)
+  * [Async properties](#async-properties)
+  * [Carrossel](#carrossel)
+  * [Bulma](#bulma)
+  * [Variáveis](#vari-veis)
+  
 ## Estrutura do projeto
 
 O projeto é construído com `vue cli` com o template mínimo sem `router` nem `vuex`.

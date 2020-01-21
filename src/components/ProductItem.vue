@@ -1,5 +1,5 @@
 <template>
-    <div class="product-item" :class="{'hover'  :  hover}" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
+    <div class="product-item" :class="{'hover' : hover}" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
         <div class="product-item-container is-unselectable">
 
             <!-- Image container row -->
@@ -195,25 +195,39 @@
 
     .product-item {
         font-size: 1rem;
-
         max-width: 300px;
 
         padding: .75em;
-
         @include mobile() {
             padding: .35em;
         }
 
         border: 1px solid $border-color;
         border-radius: 5px;
+
+        margin-left: auto;
+        margin-right: auto;
     }
 
     @include tablet() {
+        /* Float product item on hover */
         .product-item.hover {
+            border: none;
 
-            z-index: 10000;
-            position: absolute;
-            background-color: white;
+            .product-item-container {
+
+                z-index: 10000;
+                position: absolute;
+                background-color: white;
+
+                margin: -.75em;
+                padding: .75em;
+                width: inherit;
+                max-width: inherit;
+
+                border: 1px solid $border-color;
+                border-radius: 5px;
+            }
         }
     }
 

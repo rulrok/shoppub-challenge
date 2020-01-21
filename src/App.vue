@@ -6,7 +6,12 @@
                 <div class="columns is-centered is-mobile is-multiline">
                     <template v-if="!products$loading">
                         
-                        <div class="column is-half-mobile is-one-third-desktop is-half-tablet is-narrow"
+                        <div class="column 
+                        is-half-mobile 
+                        is-one-third-desktop 
+                        is-half-tablet
+                        is-one-quarter-fullhd
+                        is-narrow"
                              v-for="product in products">
 
                             <product-item

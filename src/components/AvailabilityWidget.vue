@@ -19,10 +19,10 @@
                         <button class="quantity-control mobile-quantity-control is-hidden-tablet" @click="decreaseQuantity">-</button>
                     </div>
                     <div class="column is-hidden-tablet">
-                        <input class="mobile-quantity-input" 
+                        <input class="mobile-quantity-input"
                                readonly
-                               tabindex="-1" 
-                               type="text" step="1" min="1" :max="maxAvailability" 
+                               tabindex="-1"
+                               type="text" step="1" min="1" :max="maxAvailability"
                                v-model="selectedQuantity">
                     </div>
                     <div class="column is-full-tablet is-3-mobile">
@@ -88,9 +88,9 @@
         cursor: pointer;
     }
 
-    $spacing: .33em;
-    $basic-input-height: 3.3em + $spacing;
-    $mobile-input-height: 2em;
+    $spacing: .2em;
+    $basic-input-height: 3em + $spacing;
+    $mobile-input-height: 2.5em;
 
     .availability-widget .column.is-2-tablet > .quantity-control-container > .columns > .column.is-hidden-tablet {
         /* Spacing for number input on mobile size */
@@ -99,7 +99,7 @@
 
     .quantity-input {
         width: $basic-input-height;
-        height: $basic-input-height;
+        height: 100%;
     }
 
     .mobile-quantity-input {
@@ -133,19 +133,23 @@
             border: none;
             color: white;
 
-            height: calc((#{$basic-input-height} - 2 * #{$spacing}) / 2);
+            height: calc(100% - 1px);
             width: 100%;
             font-size: 1em;
             text-align: center;
 
         }
+        
+        .columns > .column:last-child {
+            margin-bottom: -1px!important;
+        }
     }
 
     button.add-quantity {
         width: 100%;
-        height: $basic-input-height;
+        height: 100%;
         @include mobile() {
-            height: $mobile-input-height * 1.5;
+            height: $mobile-input-height;
         }
         background-color: $primary-color;
         border: none;

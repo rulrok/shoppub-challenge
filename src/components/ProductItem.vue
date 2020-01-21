@@ -227,6 +227,8 @@
 
                 border: 1px solid $border-color;
                 border-radius: 5px;
+
+                box-shadow: 0 0 20px -3px $border-color;
             }
         }
     }

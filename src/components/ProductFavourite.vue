@@ -1,12 +1,14 @@
 <template>
-    <button :class="favouriteClass" @click.prevent="favouriteProduct">
-        <FavouriteStar/>
+    <button :class="favouriteClass" @click="favouriteProduct">
+        <FavouriteStar v-if="!isFavourite"/>
+        <FullFavouriteStar v-else/>
     </button>
 </template>
 
 <script>
 
     import FavouriteStar from "../assets/icon_rating.svg?inline";
+    import FullFavouriteStar from "../assets/icon_rating_full.svg?inline";
 
     export default {
         name: "ProductFavourite",
@@ -21,7 +23,7 @@
                 default: false,
             },
         },
-        components: {FavouriteStar},
+        components: {FavouriteStar, FullFavouriteStar},
         data: function () {
             return {
                 isFavourite: this.isFavouriteInitial,
@@ -34,8 +36,8 @@
         },
         methods: {
             favouriteProduct() {
-                //TODO We'd make the post request here to save it
-                this.isFavourite = !this.isFavourite;
+                //TODO We'd make the post request here to save it or emit an event
+                setTimeout(() => this.isFavourite = !this.isFavourite, 150);
             },
         },
     };
@@ -48,16 +50,23 @@
     }
 
     button {
+        cursor: pointer;
         background-color: transparent;
         margin: 0;
         padding: 0;
         border: none;
-        
+
         > svg {
+            width: 100%;
+            height: inherit;
             margin: 0;
             padding: 0;
             vertical-align: middle;
         }
+    }
+
+    button:active, button:focus {
+        outline: none;
     }
 
 </style>

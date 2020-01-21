@@ -3,7 +3,8 @@
         <div class="product-item-container">
 
             <div class="product-image-gallery columns">
-                <product-favourite v-if="$_show_favourite_widget" class="fav-product"
+                <product-favourite v-if="$_show_favourite_widget" 
+                                   class="fav-product"
                                    :product-id="id"
                                    :is-favourite-initial="false"
                 />
@@ -226,6 +227,13 @@
             position: absolute;
             top: .75em;
             left: .75em;
+            width: 100%;
+            max-width: 30px;
+            height: 30px;
+            @include mobile(){
+                max-width: 20px;
+                height: 20px;
+            }
         }
     }
 

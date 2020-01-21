@@ -3,12 +3,15 @@
         <template v-if="$_product_list_configured">
             <div class="container">
 
-                <div class="columns is-centered is-mobile">
+                <div class="columns is-centered is-mobile is-multiline">
                     <template v-if="!products$loading">
-                        <div class="column is-half-mobile is-one-third-tablet is-narrow"
+                        <div class="column is-half-mobile is-one-third-desktop is-half-tablet is-narrow"
                              v-for="product in products">
 
-                            <product-item :key="product.id" v-bind="product" @add-to-cart="addToCart"/>
+                            <product-item
+                                    :key="product.id"
+                                    v-bind="product"
+                                    @add-to-cart="addToCart"/>
                         </div>
 
                     </template>
@@ -82,7 +85,7 @@
         font-family: 'Roboto', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        margin: 60px 5px;
+        margin: 60px 5px 240px;
         padding: 0 5px;
     }
 

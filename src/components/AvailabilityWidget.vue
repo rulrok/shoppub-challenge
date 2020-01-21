@@ -3,8 +3,9 @@
         <!-- non-mobile input left side -->
         <div class="column is-narrow is-hidden-mobile">
             <input
-                    readonly
                     class="quantity-input"
+                    readonly
+                    tabindex="-1"
                     type="text" step="1" min="1" :max="maxAvailability"
                     v-model="selectedQuantity">
         </div>
@@ -18,7 +19,11 @@
                         <button class="quantity-control mobile-quantity-control is-hidden-tablet" @click="decreaseQuantity">-</button>
                     </div>
                     <div class="column is-hidden-tablet">
-                        <input class="mobile-quantity-input" type="text" step="1" min="1" :max="maxAvailability" v-model="selectedQuantity">
+                        <input class="mobile-quantity-input" 
+                               readonly
+                               tabindex="-1" 
+                               type="text" step="1" min="1" :max="maxAvailability" 
+                               v-model="selectedQuantity">
                     </div>
                     <div class="column is-full-tablet is-3-mobile">
                         <button class="quantity-control is-hidden-mobile" @click="decreaseQuantity">-</button>

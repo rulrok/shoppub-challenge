@@ -57,7 +57,7 @@
             ProductItem,
         },
         methods: {
-            addToCart({id, quantity, attributes = {}}) {
+            addToCart({id, quantity, attributes = []}) {
 
                 alert(`Adicionado ${quantity} produto(s) (id ${id}). Atributo(s): ${attributes.map(a => a.id)}`);
             },

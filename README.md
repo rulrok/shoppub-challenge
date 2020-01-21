@@ -72,6 +72,41 @@ sub-componente menor.
 
 A comunicação é feita através de eventos emitidos pelos sub-componentes.
 
+O uso de `ProductItem` é ilustrado como:
+
+```html
+<div v-for="product in products">
+    <product-item
+            :key="product.id"
+            v-bind="product"
+            @add-to-cart="addToCart"/>
+</div>
+```
+
+O único evento necessário a ser reagido é `add-to-cart`.
+Esse evento é disparado quando o usuário clicar em **Adicionar** ou **Comprar**.
+Ele pode ser tratado como:
+
+
+```js
+function addToCart({id, quantity, attributes = []}) {
+    alert(`Adicionado ${quantity} produto(s) (id ${id}). Atributo(s): ${attributes.map(a => a.id)}`);
+}
+```
+
+Objeto parâmetro exemplo
+
+```json
+{
+  "id" : 1, //id do produto
+  "quantity" : 5, //quantidade do produto
+  "attributes" : [ //ids das tags escolhidas para o produto (opcional)
+    { "id": 17 },
+    { "id": 20 }
+  ]
+}
+```
+
 ## *Hover* e personalizaçào
 
 Para tentar obter um melhor desempenho no navegador, toda a personalização do
@@ -97,14 +132,23 @@ facilmente. Veja `src/mixins/settings-mixin.js`
 
 # Dependências
 
+## Async properties
+
+[vue-async-properties](https://www.npmjs.com/package/vue-async-properties)
+
+Para carregar os arquivos `.json` como numa situação real com delay e com 
+tratamento para os dados padrões iniciais, `vue-async-properties` é usado.
+
 ## Carrossel
 
+[vue-agile](https://github.com/lukaszflorczak/vue-agile)
+
  O componente de carrossel é externo.
- [vue-agile](https://github.com/lukaszflorczak/vue-agile)
  
  ## Bulma
  
  [bulma](https://bulma.io/documentation/)
+ 
  Para o sistema de responsividade e grid, eu em geral escolho delegar essa
  responsabilidade para um framework dedicado open-source.
  

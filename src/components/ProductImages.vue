@@ -1,8 +1,10 @@
 <template>
-    <figure class="product-image image is-square">
-        <img class="cover" :src="cover" :alt="alt">
-        <img class="hover" :src="hover" :alt="alt">
-    </figure>
+    <div>
+        <figure class="product-image image is-square">
+            <img class="cover" :src="cover" :alt="alt">
+            <img class="hover" :src="hover" :alt="alt">
+        </figure>
+    </div>
 </template>
 
 <script>
@@ -27,7 +29,7 @@
 
 <style scoped lang="scss">
     /* Use the parent .product-item.hover to determine image to display */
-    
+
     /* By default we are not hovering the content */
     img.hover {
         display: none;

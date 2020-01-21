@@ -3,7 +3,7 @@
         <div class="product-item-container">
 
             <div class="product-image-gallery columns">
-                <product-favourite v-if="$_show_favourite_widget" 
+                <product-favourite v-if="$_show_favourite_widget"
                                    class="fav-product"
                                    :product-id="id"
                                    :is-favourite-initial="false"
@@ -84,10 +84,10 @@
                     </template>
 
                     <template v-else>
-                        <buy-see-product 
-                                         :product-id="id"
-                                         :product-name="title"
-                                         @add-product="addToCart"
+                        <buy-see-product
+                                :product-id="id"
+                                :product-name="title"
+                                @add-product="addToCart"
                         />
                     </template>
 
@@ -191,6 +191,10 @@
         max-width: 300px;
 
         padding: .75em;
+        
+        @include mobile(){
+            padding: .35em;
+        }
 
         border: 1px solid $border-color;
         border-radius: 5px;
@@ -230,7 +234,7 @@
             width: 100%;
             max-width: 30px;
             height: 30px;
-            @include mobile(){
+            @include mobile() {
                 max-width: 20px;
                 height: 20px;
             }
@@ -251,7 +255,7 @@
     }
 
     /* Style for toggling attributes on element not hover */
-    @include tablet(){
+    @include tablet() {
         .product-item:not(.hover) {
             .attributes, .related-products, .availability {
                 display: none;

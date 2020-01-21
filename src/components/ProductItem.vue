@@ -1,6 +1,6 @@
 <template>
     <div class="product-item" :class="{'hover'  :  hover}" @mouseover="onMouseOver" @mouseleave="onMouseLeave">
-        <div class="product-item-container">
+        <div class="product-item-container is-unselectable">
 
             <div class="product-image-gallery columns">
                 <product-favourite v-if="$_show_favourite_widget"

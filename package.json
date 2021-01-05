@@ -7,7 +7,7 @@
     "build": "vue-cli-service build --modern"
   },
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "vue": "^2.6.10",
     "vue-agile": "^1.0.11",
     "vue-async-properties": "^0.5.1",
